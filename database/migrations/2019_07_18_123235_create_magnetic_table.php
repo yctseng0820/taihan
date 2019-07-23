@@ -15,10 +15,10 @@ class CreateMagneticTable extends Migration
     {
         Schema::create('magnetisms', function (Blueprint $table) {
             $table->increments('id');
-            $table->varchar('product');
-            $table->varchar('industry');
-            $table->varchar('suggest');
-            $table->varchar('calculation');
+            $table->string('name');
+            $table->string('description');
+            $table->string('photo');
+            $table->integer('pid');
             $table->timestamps();
         });
     }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>泰翰 - 後台管理系統</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -45,9 +45,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>泰</b>翰</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>泰翰</b> - 後台管理系統</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -339,6 +339,18 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
           <a href="#">
+            <i class="fa fa-dashboard"></i> <span>產品項目</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="{{  route('magnetism.create'  )}}"><i class="fa fa-circle-o"></i> 產品添加</a></li>
+            <li><a href="{{  route('magnetism.index'  )}}"><i class="fa fa-circle-o"></i> 產品項目</a></li>
+          </ul>
+        </li>
+        <li class="treeview-menu">
+          <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -517,7 +529,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.13-pre
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">泰翰 - 後台管理系統</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -754,5 +766,6 @@
 <script src="/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
+<script src="/js/laravel.js"></script>
 </body>
 </html>
