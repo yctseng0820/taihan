@@ -7,8 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        產品項目添加
-        <small>Preview</small>
+        磁性材料產品添加
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -30,28 +29,44 @@
             {{  csrf_field()  }}
               <div class="box-body">
                 <div class="form-group">
-                  <label for="name">產品名稱</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="">
-                </div>
-                <div class="form-group">
-                  <label for="description">產品描述</label>
-                  <input type="text" class="form-control" id="description" name="description" placeholder="">
-                </div>
-                <div class="form-group">
-                  <label for="pid">分類:</label>
-                  <select name="pid" id="pid">
-                    <option value="0">永磁除鐵器</option> 
-                    <option value="0">金屬探測器</option> 
-                    <option value="0">蔗層除鐵器</option> 
-                    <option value="0">磁性過濾機</option> 
-                    <option value="0">永磁起重器</option> 
-                    <option value="0">電磁除鐵設備</option> 
-                    <option value="0">電磁起重器</option>
+                  <label for="category">分類:</label>
+                  <select name="category" id="category">
+                  @foreach($datas as $data)
+                    <option value="{{$data->id}}">{{$data->title}}</option> 
+                  @endforeach
                   </select>
                 </div>
                 <div class="form-group">
+                  <label for="title_tw">產品名稱 - 繁體中文</label>
+                  <input type="text" class="form-control" id="title_tw" name="title_tw" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="title_cn">產品名稱 - 簡體中文</label>
+                  <input type="text" class="form-control" id="title_cn" name="title_cn" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="title_en">產品名稱 - 英文</label>
+                  <input type="text" class="form-control" id="title_en" name="title_en" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="content_tw">產品內容 - 繁體中文</label>
+                  <input type="text" class="form-control" id="content_tw" name="content_tw" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="content_cn">產品內容 - 簡體中文</label>
+                  <input type="text" class="form-control" id="content_cn" name="content_cn" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="content_en">產品內容 - 英文</label>
+                  <input type="text" class="form-control" id="content_en" name="content_en" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="sort">排序:(1~99)</label>
+                  <input type="text" class="form-control" id="sort" name="sort" placeholder="">
+                </div>
+                <div class="form-group">
                   <label for="photo">上傳圖片</label>
-                  <input type="file" id="photo" name="photo">
+                  <input type="file" id="img" name="img[]" multiple>
 
                   <p class="help-block">Example block-level help text here.</p>
                 </div>

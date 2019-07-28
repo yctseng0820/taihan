@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Magpid;
+use App\Magphoto;
 use App\Magnetism;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Melihovv\Base64ImageDecoder\Base64ImageEncoder;
 
 class MagnetismController extends Controller
 {
@@ -26,7 +29,8 @@ class MagnetismController extends Controller
      */
     public function create()
     {
-        return view('admin.mag.create');
+        $datas = Magpid::orderby('id')->get();
+        return view('admin.mag.create')->with('datas', $datas);
     }
 
     /**
@@ -37,8 +41,10 @@ class MagnetismController extends Controller
      */
     public function store(Request $request)
     {
-        $res = Magnetism::create($request->all());
-        back();
+        dd($request->all());
+
+        // $allowExt = array('jpeg', 'jpg', 'gif', 'png');
+        
     }
 
     /**
