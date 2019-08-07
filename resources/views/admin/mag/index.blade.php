@@ -27,9 +27,15 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>商品名稱</th>
-                  <th>商品描述</th>
-                  <th>類別</th>
+                  <th>ID</th>
+                  <th>標題 - 繁中</th>
+                  <th>標題 - 簡中</th>
+                  <th>標題 - 英文</th>
+                  <th>內容 - 繁中</th>
+                  <th>內容 - 簡中</th>
+                  <th>內容 - 英文</th>
+                  <th>分類ID</th>
+                  <th>排序</th>
                   <th>圖片</th>
                   <th>修改/刪除</th>
                 </tr>
@@ -37,10 +43,16 @@
                 @foreach($datas as $data)
                 <tbody>
                 <tr>
-                  <td>{{$data->name}}</td>
-                  <td>{{$data->description}}</td>
-                  <td>{{$data->pid}}</td>
-                  <td>{{$data->photo}}</td>
+                  <td>{{$data->id}}</td>
+                  <td>{{$data->title_tw}}</td>
+                  <td>{{$data->title_cn}}</td>
+                  <td>{{$data->title_en}}</td>
+                  <td>{{$data->content_tw}}</td>
+                  <td>{{$data->content_cn}}</td>
+                  <td>{{$data->content_en}}</td>
+                  <td>{{$data->category_id}}</td>
+                  <td>{{$data->sort}}</td>
+                  <td>{{$data->img}}</td>
                   <td>
                     <button class="btn btn-warning" onclick='jacascript:location.href="{{route('magnetism.edit', $data->id)}}"'> 
                     修改
