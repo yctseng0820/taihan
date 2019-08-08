@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        磁性材料產品添加
+        <b>添加最新消息</b>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -25,39 +25,31 @@
           <div class="box box-primary">
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="post" action="{{route('magnetism.store')}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('announce.store')}}" enctype="multipart/form-data">
             {{  csrf_field()  }}
               <div class="box-body">
                 <div class="form-group">
-                  <label for="category_id">分類:</label>
-                  <select name="category_id" id="category_id">
-                  @foreach($datas as $data)
-                    <option value="{{$data->id}}">{{$data->title_tw}}</option> 
-                  @endforeach
-                  </select>
+                  <label for="title_tw">最新消息標題 - 繁體中文</label>
+                  <input type="text" class="form-control" id="title_tw" name="title_tw" required>
                 </div>
                 <div class="form-group">
-                  <label for="title_tw">產品名稱 - 繁體中文</label>
-                  <input type="text" class="form-control" id="title_tw" name="title_tw" required autofocus>
-                </div>
-                <div class="form-group">
-                  <label for="title_cn">產品名稱 - 簡體中文</label>
+                  <label for="title_cn">最新消息標題 - 簡體中文</label>
                   <input type="text" class="form-control" id="title_cn" name="title_cn" required>
                 </div>
                 <div class="form-group">
-                  <label for="title_en">產品名稱 - 英文</label>
+                  <label for="title_en">最新消息標題 - 英文</label>
                   <input type="text" class="form-control" id="title_en" name="title_en" required>
                 </div>
                 <div class="form-group">
-                  <label for="content_tw">產品內容 - 繁體中文</label>
+                  <label for="content_tw">最新消息內容 - 繁體中文</label>
                   <textarea rows="5" col="50" class="form-control" id="content_tw" name="content_tw" required></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="content_cn">產品內容 - 簡體中文</label>
+                  <label for="content_cn">最新消息內容 - 簡體中文</label>
                   <textarea rows="5" col="50" class="form-control" id="content_cn" name="content_cn" required></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="content_en">產品內容 - 英文</label>
+                  <label for="content_en">最新消息內容 - 英文</label>
                   <textarea rows="5" col="50" class="form-control" id="content_en" name="content_en" required></textarea>
                 </div>
                 <div class="form-group">

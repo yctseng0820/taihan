@@ -70,7 +70,8 @@ class MagnetismController extends Controller
                 }
                 $tmp = $_file['tmp_name'][0];
                 $dir = public_path().'\uploads\\'.$name;
-                $push_img = ['img' => $dir];
+                $img_name = $name;
+                $push_img = ['img' => $img_name];
                 $res = array_merge($input , $push_img);
 
                 move_uploaded_file($tmp, $dir);
@@ -104,7 +105,9 @@ class MagnetismController extends Controller
     public function edit($id)
     {
         $data = Magnetism::find($id);
-        return view('admin.mag.edit')->with('data', $data);
+        // dd($data->img);
+        $cates = Category::all();
+        return view('admin.mag.edit')->with('data', $data)->with('cates', $cates);
     }
 
     /**
@@ -116,9 +119,57 @@ class MagnetismController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $data = Magnetism::find($id);
-       $data->update($request->all()); 
-       return redirect(route('magnetism.edit', $id));
+    
+        $input = $request->all();
+        $rules = [
+            'title_tw' => 'required',
+            'title_cn' => 'required',
+            'title_en' => 'required',
+            'content_tw' => 'required',
+            'content_cn' => 'required',
+            'content_en' => 'required',
+            'category_id' => 'required',
+            'sort' => 'required',
+        ];
+        $valid = Validator::make($input, $rules);
+
+        if($valid->passes()){
+            //檢測是否有上傳圖片
+            if($request->hasFile('img')){
+                $_file = $_FILES['img'];
+                $name = time().'_'.$_file['name'][0];
+                $exp = explode('.', $name);
+                $ext = array_pop($exp);
+                $allow_ext = ['jpg', 'png', 'jpeg', 'bmp'];
+                if(!in_array($ext, $allow_ext)){
+                    return '非圖片格式!';
+                }
+                $s = $_POST['sort'];
+                if(($s>99) || ($s<1)){
+                    return '排序的值要在1~99之間。';
+                }
+                $tmp = $_file['tmp_name'][0];
+                $dir = public_path().'\uploads\\'.$name;
+                $img_name = $name;
+                $push_img = ['img' => $img_name];
+                $res = array_merge($input , $push_img);
+                $img_ori_name = Magnetism::find($id)->img;
+                $img_ori_path = public_path('uploads/').$img_ori_name;
+                if(file_exists($img_ori_path)){
+                    unlink($img_ori_path);
+                }
+                move_uploaded_file($tmp, $dir);
+
+                $data = Magnetism::find($id);
+                $data->update($res); 
+                return redirect(route('magnetism.edit', $id));
+                
+            }else{
+                return '尚未選擇圖片!';
+            }
+        }else{
+            return '請全部填寫!';
+        }
     }
 
     /**

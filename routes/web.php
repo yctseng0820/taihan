@@ -22,4 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
     Route::get('index', 'Admin\AdminController@index');
     Route::resource('magnetism','Admin\MagnetismController');
+    Route::resource('announce','Admin\AnnounceController');
 });

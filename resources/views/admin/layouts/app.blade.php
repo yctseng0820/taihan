@@ -337,28 +337,28 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>產品項目</span>
+            <i class="fa fa-dashboard"></i> <span>磁性材料</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="{{  route('magnetism.create'  )}}"><i class="fa fa-circle-o"></i> 產品添加</a></li>
             <li><a href="{{  route('magnetism.index'  )}}"><i class="fa fa-circle-o"></i> 產品項目</a></li>
+            <li class=""><a href="{{  route('magnetism.create'  )}}"><i class="fa fa-circle-o"></i> 產品添加</a></li>
           </ul>
         </li>
-        <li class="treeview-menu">
+        <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i> <span>最新消息</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li class=""><a href="{{  route('announce.index'  )}}"><i class="fa fa-circle-o"></i>最新消息列表</a></li>
+            <li><a href="{{  route('announce.create'  )}}"><i class="fa fa-circle-o"></i>新增最新消息</a></li>
           </ul>
         </li>
         <li class="treeview">

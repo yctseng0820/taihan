@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Announce extends Model
 {
     protected $fillable = [
-        'titlw_tw',
-        'titlw_cn',
-        'titlw_en',
+        'title_tw',
+        'title_cn',
+        'title_en',
         'content_tw',
         'content_cn',
         'content_en',
