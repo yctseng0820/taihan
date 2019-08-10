@@ -40,28 +40,38 @@ class AnnounceController extends Controller
         if($request->hasFile('img')){
             $_file = $_FILES['img'];
             $name = time().'_'.$_file['name'][0];
-            $ext_arr = explode('.', $name);
-            $ext = array_pop($ext_arr);
+            $exp = explode('.', $name);
+            $ext = array_pop($exp);
             $allow_ext = ['jpg', 'png', 'jpeg', 'bmp'];
             if(!in_array($ext, $allow_ext)){
                 return '非圖片格式!';
             }
-            $s = $_POST['sort'];
-            if(($s>99) || ($s<1)){
+            $input = $request->all();
+            if($input['sort'] === null){
+                $input['sort'] = 1;
+            }elseif(($s>99) || ($s<1)){
                 return '排序的值要在1~99之間。';
             }
             $tmp = $_file['tmp_name'][0];
             $dir = public_path().'\uploads\\'.$name;
             $img_name = $name;
             $push_img = ['img' => $img_name];
-            $input = $request->all();
-            $res = array_merge($input, $push_img);
-           
+            $res = array_merge($input , $push_img);
+
             move_uploaded_file($tmp, $dir);
             Announce::create($res);
             return redirect(route('announce.index'));
         }else{
-            return '尚未選擇圖片!';
+            $input = $request->all();
+            if($input['sort'] === null){
+                $input['sort'] = 1;
+            }elseif(($input['sort']>99) || ($input['sort']<1)){
+                return '排序的值要在1~99之間。';
+            }
+            $img = ['img' =>''];
+            $input = array_merge($input, $img);
+            Announce::create($input);
+            return redirect(route('announce.index'));
         }
     }
 
@@ -97,8 +107,6 @@ class AnnounceController extends Controller
      */
     public function update(Request $request, $id)
     {
-    
-        //檢測是否有上傳圖片
         if($request->hasFile('img')){
             $_file = $_FILES['img'];
             $name = time().'_'.$_file['name'][0];
@@ -108,30 +116,45 @@ class AnnounceController extends Controller
             if(!in_array($ext, $allow_ext)){
                 return '非圖片格式!';
             }
-            $s = $_POST['sort'];
-            if(($s>99) || ($s<1)){
+            $input = $request->all();
+            if($input['sort'] === null){
+                $input['sort'] = 1;
+            }elseif(($input['sort']>99) || ($input['sort']<1)){
                 return '排序的值要在1~99之間。';
             }
+
             $tmp = $_file['tmp_name'][0];
             $dir = public_path().'\uploads\\'.$name;
             $img_name = $name;
             $push_img = ['img' => $img_name];
-            $input = $request->all();
             $res = array_merge($input , $push_img);
+
             $img_ori_name = Announce::find($id)->img;
-            $img_ori_path = public_path('uploads/').$img_ori_name;
-            if(file_exists($img_ori_path)){
-                unlink($img_ori_path);
+            if($img_ori_name != null){
+                $img_ori_path = public_path('uploads/').$img_ori_name;
+                if(file_exists($img_ori_path)){
+                    unlink($img_ori_path);
+                }
+                move_uploaded_file($tmp, $dir);
             }
             move_uploaded_file($tmp, $dir);
 
             $data = Announce::find($id);
             $data->update($res); 
             return redirect(route('announce.edit', $id));
-            
         }else{
-            return '尚未選擇圖片!';
+            $input = $request->all();
+            if($input['sort'] === null){
+                $input['sort'] = 1;
+            }elseif(($input['sort']>99) || ($input['sort']<1)){
+                return '排序的值要在1~99之間。';
+            }
+            $data = Announce::find($id);
+            $res = array_merge($input, ['img'=> $data->img]);
+            $data->update($res); 
+            return redirect(route('announce.edit', $id));
         }
+    
     }
 
     /**

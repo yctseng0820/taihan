@@ -50,7 +50,6 @@ class MagnetismController extends Controller
             'content_cn' => 'required',
             'content_en' => 'required',
             'category_id' => 'required',
-            'sort' => 'required',
         ];
         $valid = Validator::make($input, $rules);
 
@@ -64,8 +63,9 @@ class MagnetismController extends Controller
                 if(!in_array($ext, $allow_ext)){
                     return '非圖片格式!';
                 }
-                $s = $_POST['sort'];
-                if(($s>99) || ($s<1)){
+                if($input['sort'] === null){
+                  $input['sort'] = 1;
+                }elseif(($input['sort']>99) || ($input['sort']<1)){
                     return '排序的值要在1~99之間。';
                 }
                 $tmp = $_file['tmp_name'][0];
@@ -78,10 +78,19 @@ class MagnetismController extends Controller
                 Magnetism::create($res);
                 return redirect(route('magnetism.index'));
             }else{
-                return '尚未選擇圖片!';
+                $input = $request->all();
+                if($input['sort'] === null){
+                  $input['sort'] = 1;
+                }elseif(($input['sort']>99) || ($input['sort']<1)){
+                    return '排序的值要在1~99之間。';
+                }
+                $img = ['img' =>''];
+                $input = array_merge($input, $img);
+                Magnetism::create($input);
+                return redirect(route('magnetism.index'));
             }
         }else{
-            return '請全部填寫!';
+            return '請填寫必填欄位!';
         }
     }
 
@@ -129,12 +138,10 @@ class MagnetismController extends Controller
             'content_cn' => 'required',
             'content_en' => 'required',
             'category_id' => 'required',
-            'sort' => 'required',
         ];
         $valid = Validator::make($input, $rules);
 
         if($valid->passes()){
-            //檢測是否有上傳圖片
             if($request->hasFile('img')){
                 $_file = $_FILES['img'];
                 $name = time().'_'.$_file['name'][0];
@@ -144,19 +151,25 @@ class MagnetismController extends Controller
                 if(!in_array($ext, $allow_ext)){
                     return '非圖片格式!';
                 }
-                $s = $_POST['sort'];
-                if(($s>99) || ($s<1)){
+                if($input['sort'] === null){
+                  $input['sort'] = 1;
+                }elseif(($input['sort']>99) || ($input['sort']<1)){
                     return '排序的值要在1~99之間。';
                 }
+
                 $tmp = $_file['tmp_name'][0];
                 $dir = public_path().'\uploads\\'.$name;
                 $img_name = $name;
                 $push_img = ['img' => $img_name];
                 $res = array_merge($input , $push_img);
+
                 $img_ori_name = Magnetism::find($id)->img;
-                $img_ori_path = public_path('uploads/').$img_ori_name;
-                if(file_exists($img_ori_path)){
-                    unlink($img_ori_path);
+                if($img_ori_name != null){
+                    $img_ori_path = public_path('uploads/').$img_ori_name;
+                    if(file_exists($img_ori_path)){
+                        unlink($img_ori_path);
+                    }
+                    move_uploaded_file($tmp, $dir);
                 }
                 move_uploaded_file($tmp, $dir);
 
@@ -165,10 +178,19 @@ class MagnetismController extends Controller
                 return redirect(route('magnetism.edit', $id));
                 
             }else{
-                return '尚未選擇圖片!';
+                $input = $request->all();
+                if($input['sort'] === null){
+                  $input['sort'] = 1;
+                }elseif(($input['sort']>99) || ($input['sort']<1)){
+                    return '排序的值要在1~99之間。';
+                }
+                $data = Magnetism::find($id);
+                $res = array_merge($input, ['img'=> $data->img]);
+                $data->update($res); 
+                return redirect(route('magnetism.edit', $id));
             }
         }else{
-            return '請全部填寫!';
+            return '請填寫必填欄位!';
         }
     }
 

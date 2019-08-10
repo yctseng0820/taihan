@@ -55,7 +55,7 @@
                 </div>
                 <div class="form-group">
                   <label for="sort">排序:(1~99)</label>
-                  <input type="number" class="form-control" id="sort" name="sort" required placeholder="1~99" value="{{$data->sort}}">
+                  <input type="number" class="form-control" id="sort" name="sort" placeholder="1~99" value="{{$data->sort}}">
                 </div>
                 <div class="form-group">
                 <p><b>原始圖片</b></p>
