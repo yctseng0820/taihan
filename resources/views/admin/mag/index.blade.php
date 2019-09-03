@@ -22,6 +22,11 @@
             <div class="box-header">
               <h3 class="box-title">Hover Data Table</h3>
             </div>
+            @if(session()->has('msg'))
+            <div class="box-header">
+              <h3 class="box-title">{{session('msg')}}</h3>
+            </div>
+            @endif
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example2" class="table table-bordered table-hover">

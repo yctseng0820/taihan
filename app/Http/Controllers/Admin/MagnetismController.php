@@ -76,7 +76,7 @@ class MagnetismController extends Controller
 
                 move_uploaded_file($tmp, $dir);
                 Magnetism::create($res);
-                return redirect(route('magnetism.index'));
+                return redirect()->route('magnetism.index')->with('msg', 'ok');
             }else{
                 $input = $request->all();
                 if($input['sort'] === null){

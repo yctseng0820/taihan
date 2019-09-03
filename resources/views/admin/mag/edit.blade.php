@@ -70,7 +70,11 @@
                 </div>
                 <div class="form-group">
                 <p><b>原始圖片</b></p>
+                @if($data->img)
                   <img src="{{url('uploads/'.$data->img)}}" alt="">
+                @else
+                  {{"沒有圖片"}}
+                @endif
                 </div>
                 <div class="form-group">
                   <label for="img">上傳圖片</label>

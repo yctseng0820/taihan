@@ -29,27 +29,27 @@
             {{  csrf_field()  }}
               <div class="box-body">
                 <div class="form-group">
-                  <label for="title_tw">最新消息標題 - 繁體中文</label>
+                  <label for="title_tw">最新消息標題 - 繁體中文<span style="color:red;">*</span></label>
                   <input type="text" class="form-control" id="title_tw" name="title_tw" required>
                 </div>
                 <div class="form-group">
-                  <label for="title_cn">最新消息標題 - 簡體中文</label>
+                  <label for="title_cn">最新消息標題 - 簡體中文<span style="color:red;">*</span></label>
                   <input type="text" class="form-control" id="title_cn" name="title_cn" required>
                 </div>
                 <div class="form-group">
-                  <label for="title_en">最新消息標題 - 英文</label>
+                  <label for="title_en">最新消息標題 - 英文<span style="color:red;">*</span></label>
                   <input type="text" class="form-control" id="title_en" name="title_en" required>
                 </div>
                 <div class="form-group">
-                  <label for="content_tw">最新消息內容 - 繁體中文</label>
+                  <label for="content_tw">最新消息內容 - 繁體中文<span style="color:red;">*</span></label>
                   <textarea rows="5" col="50" class="form-control" id="content_tw" name="content_tw" required></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="content_cn">最新消息內容 - 簡體中文</label>
+                  <label for="content_cn">最新消息內容 - 簡體中文<span style="color:red;">*</span></label>
                   <textarea rows="5" col="50" class="form-control" id="content_cn" name="content_cn" required></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="content_en">最新消息內容 - 英文</label>
+                  <label for="content_en">最新消息內容 - 英文<span style="color:red;">*</span></label>
                   <textarea rows="5" col="50" class="form-control" id="content_en" name="content_en" required></textarea>
                 </div>
                 <div class="form-group">
@@ -86,4 +86,9 @@
     </section>
     <!-- /.content -->
   </div>
+  <script>
+    CKEDITOR.replace( 'content_tw' );
+    CKEDITOR.replace( 'content_cn' );
+    CKEDITOR.replace( 'content_en' );
+  </script>
 @endsection
