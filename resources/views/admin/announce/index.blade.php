@@ -23,7 +23,7 @@
               <h3 class="box-title">Hover Data Table</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body" style="overflow:scroll;">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>

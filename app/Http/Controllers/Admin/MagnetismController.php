@@ -17,7 +17,7 @@ class MagnetismController extends Controller
      */
     public function index()
     {
-        $datas = Magnetism::orderby('id')->get();
+        $datas = Magnetism::orderby('id')->paginate(5);
         return view('admin.mag.index')->with('datas', $datas);
     }
 
@@ -175,6 +175,7 @@ class MagnetismController extends Controller
 
                 $data = Magnetism::find($id);
                 $data->update($res); 
+                Session::put('success', '修改成功');
                 return redirect(route('magnetism.edit', $id));
                 
             }else{
@@ -187,6 +188,7 @@ class MagnetismController extends Controller
                 $data = Magnetism::find($id);
                 $res = array_merge($input, ['img'=> $data->img]);
                 $data->update($res); 
+                session()->put('success', '修改成功!');
                 return redirect(route('magnetism.edit', $id));
             }
         }else{

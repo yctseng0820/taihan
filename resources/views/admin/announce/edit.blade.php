@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-group">
                 <p><b>原始圖片</b></p>
-                  <img src="{{url('uploads/'.$data->img)}}" alt="">
+                  <img src="{{url('uploads/'.$data->img)}}" alt="" width="30%;">
                 </div>
                 <div class="form-group">
                   <label for="img">上傳圖片</label>
@@ -91,4 +91,9 @@
     </section>
     <!-- /.content -->
   </div>
+  <script>
+    CKEDITOR.replace( 'content_tw' );
+    CKEDITOR.replace( 'content_cn' );
+    CKEDITOR.replace( 'content_en' );
+  </script>
 @endsection
