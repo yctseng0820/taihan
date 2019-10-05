@@ -15,7 +15,7 @@ class AnnounceController extends Controller
      */
     public function index()
     {
-        $datas = Announce::orderby('id')->get();
+        $datas = Announce::orderby('id')->paginate(5);
         return view('admin/announce/index')->with('datas', $datas);
     }
 

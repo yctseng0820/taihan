@@ -5,14 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
-      </ol>
     </section>
     <!-- Main content -->
     <section class="content">
@@ -20,7 +13,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Hover Data Table</h3>
+              <h3 class="box-title">最新消息列表</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body" style="overflow:scroll;">
@@ -46,11 +39,11 @@
                   <td>{{$data->title_tw}}</td>
                   <td>{{$data->title_cn}}</td>
                   <td>{{$data->title_en}}</td>
-                  <td>{{$data->content_tw}}</td>
-                  <td>{{$data->content_cn}}</td>
-                  <td>{{$data->content_en}}</td>
+                  <td>{{mb_substr($data->content_tw, 0, 30).'...'}}</td>
+                  <td>{{mb_substr($data->content_cn, 0, 30).'...'}}</td>
+                  <td>{{mb_substr($data->content_en, 0, 30).'...'}}</td>
                   <td>{{$data->sort}}</td>
-                  <td>{{$data->img}}</td>
+                  <td><img src="/uploads/{{$data->img}}" alt="" width="50px;"></td>
                   <td>
                     <button class="btn btn-warning" onclick='jacascript:location.href="{{route('announce.edit', $data->id)}}"'> 
                     修改
@@ -63,16 +56,8 @@
                 </tr>
                 </tbody>
                 @endforeach
-                <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot>
               </table>
+              {{  $datas->links()  }}
             </div>
             <!-- /.box-body -->
           </div>

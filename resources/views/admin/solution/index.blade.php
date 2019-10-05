@@ -15,7 +15,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title"><b>磁性材料 - 產品列表</b></h3>
+              <h3 class="box-title"><b>產業 - 產業列表</b></h3>
             </div>
             @if(session()->has('msg'))
             <div class="box-header">
@@ -47,19 +47,19 @@
                   <td>{{$data->title_tw}}</td>
                   <td>{{$data->title_cn}}</td>
                   <td>{{$data->title_en}}</td>
-                  <td>{{substr($data->content_tw, 0, 30).'...'}}</td>
-                  <td>{{substr($data->content_cn, 0, 30).'...'}}</td>
-                  <td>{{substr($data->content_en, 0, 30).'...'}}</td>
+                  <td>{{mb_substr($data->content_tw, 0, 30).'...'}}</td>
+                  <td>{{mb_substr($data->content_cn, 0, 30).'...'}}</td>
+                  <td>{{mb_substr($data->content_en, 0, 30).'...'}}</td>
                   <td>{{$data->category_id}}</td>
                   <td>{{$data->sort}}</td>
                   <td><img src="/uploads/{{$data->img}}" alt="" width="50px;"></td>
                   <td>
-                    <button class="btn btn-warning" onclick='jacascript:location.href="{{route('magnetism.edit', $data->id)}}"'> 
+                    <button class="btn btn-warning" onclick='jacascript:location.href="{{route('solution.edit', $data->id)}}"'> 
                     修改
                     </button>
-                    <!-- <button class="btn btn-danger" onclick='jacascript:location.href="{{route('magnetism.destroy', $data->id)}}" data-method="delete" data-token="{{csrf_token()}}" data-confirm="Are you sure?"''>刪除</button>  -->
+                    <!-- <button class="btn btn-danger" onclick='jacascript:location.href="{{route('solution.destroy', $data->id)}}" data-method="delete" data-token="{{csrf_token()}}" data-confirm="Are you sure?"''>刪除</button>  -->
                     <button class="btn btn-danger">
-                      <a href="{{route('magnetism.destroy', $data->id)}}" data-method="delete" data-token="{{csrf_token()}}" data-confirm="確認刪除?">刪除</a>
+                      <a href="{{route('solution.destroy', $data->id)}}" data-method="delete" data-token="{{csrf_token()}}" data-confirm="確認刪除?">刪除</a>
                     </button>
                   </td>
                 </tr>

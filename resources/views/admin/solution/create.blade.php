@@ -6,11 +6,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        磁性材料 - 產品添加
+        產業 - 添加
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{  route('magnetism.index')  }}"><i class="fa fa-dashboard"></i> 磁性材料產品列表</a></li>
-        <li class="active">產品添加</li>
+        <li><a href="{{  route('solution.index')  }}"><i class="fa fa-dashboard"></i> 產業列表</a></li>
+        <li class="active">產業添加</li>
       </ol>
     </section>
 
@@ -23,7 +23,7 @@
           <div class="box box-primary">
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="post" action="{{route('magnetism.store')}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('solution.store')}}" enctype="multipart/form-data">
             {{  csrf_field()  }}
               <div class="box-body">
                 <div class="form-group">

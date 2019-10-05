@@ -132,6 +132,30 @@
           </li>
           <li class="active treeview">
             <a href="#">
+              <i class="fa fa-dashboard"></i> <span>產業</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{  route('solution.index'  )}}"><i class="fa fa-circle-o"></i> 產業列表</a></li>
+              <li class=""><a href="{{  route('solution.create'  )}}"><i class="fa fa-circle-o"></i> 產業添加</a></li>
+            </ul>
+          </li>
+          <li class="active treeview">
+            <a href="#">
+              <i class="fa fa-dashboard"></i> <span>安全建議</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{  route('safety.index'  )}}"><i class="fa fa-circle-o"></i> 安全建議列表</a></li>
+              <li class=""><a href="{{  route('safety.create'  )}}"><i class="fa fa-circle-o"></i> 安全建議添加</a></li>
+            </ul>
+          </li>
+          <li class="active treeview">
+            <a href="#">
               <i class="fa fa-dashboard"></i> <span>最新消息</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -140,6 +164,18 @@
             <ul class="treeview-menu">
               <li class=""><a href="{{  route('announce.index'  )}}"><i class="fa fa-circle-o"></i>最新消息列表</a></li>
               <li><a href="{{  route('announce.create'  )}}"><i class="fa fa-circle-o"></i>新增最新消息</a></li>
+            </ul>
+          </li>
+          <li class="active treeview">
+            <a href="#">
+              <i class="fa fa-dashboard"></i> <span>關於我們</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class=""><a href="{{  route('about.index'  )}}"><i class="fa fa-circle-o"></i>關於我們頁面</a></li>
+              <li><a href="{{  route('about.create'  )}}"><i class="fa fa-circle-o"></i>添加關於我們</a></li>
             </ul>
           </li>
         </ul>

@@ -51,22 +51,22 @@
         <div class="collapse navbar-collapse mr-auto" id="navbarTogglerDemo02">
           <ul class="navbar-nav  mt-2 mt-lg-0">
             <li class="nav-item ">
-              <a class="nav-link" href="{{url('/product_main')}}">{{  trans('mySite.products')  }}</a>
+              <a class="nav-link" href="{{  url('/product_main'  )}}">{{  trans('mySite.products')  }}</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="solutions_main.html">{{  trans('mySite.solutions')  }}</a>
+              <a class="nav-link" href="{{  url('/solution_main')  }}">{{  trans('mySite.solutions')  }}</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="safety_advice.html">{{  trans('mySite.safetyAdvice')  }}</a>
+              <a class="nav-link" href="{{  url('/safety_advice')  }}">{{  trans('mySite.safetyAdvice')  }}</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="annos.html">{{  trans('mySite.news')  }}</a>
+              <a class="nav-link" href="{{  url('/announce')  }}">{{  trans('mySite.news')  }}</a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="contact.html">{{  trans('mySite.contactUs')  }}</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="about.html">{{  trans('mySite.company')  }}</a>
+              <a class="nav-link" href="{{  url('/about')  }}">{{  trans('mySite.company')  }}</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

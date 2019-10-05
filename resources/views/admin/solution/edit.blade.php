@@ -10,10 +10,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        磁性材料 - 產品修改
+        產業 - 產業修改
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{  route('magnetism.index')  }}"><i class="fa fa-dashboard"></i> 磁性材料產品列表</a></li>
+        <li><a href="{{  route('solution.index')  }}"><i class="fa fa-dashboard"></i> 產業列表</a></li>
         <li class="active">修改</li>
       </ol>
     </section>
@@ -27,7 +27,7 @@
           <div class="box box-primary">
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="post" action="{{route('magnetism.update', $data->id)}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('solution.update', $data->id)}}" enctype="multipart/form-data">
             {{  csrf_field()  }}
             {{  method_field('put')  }}
               <div class="box-body">

@@ -47,9 +47,9 @@
                   <td>{{$data->title_tw}}</td>
                   <td>{{$data->title_cn}}</td>
                   <td>{{$data->title_en}}</td>
-                  <td>{{substr($data->content_tw, 0, 30).'...'}}</td>
-                  <td>{{substr($data->content_cn, 0, 30).'...'}}</td>
-                  <td>{{substr($data->content_en, 0, 30).'...'}}</td>
+                  <td>{{mb_substr($data->content_tw, 0, 30).'...'}}</td>
+                  <td>{{mb_substr($data->content_cn, 0, 30).'...'}}</td>
+                  <td>{{mb_substr($data->content_en, 0, 30).'...'}}</td>
                   <td>{{$data->category_id}}</td>
                   <td>{{$data->sort}}</td>
                   <td><img src="/uploads/{{$data->img}}" alt="" width="50px;"></td>
